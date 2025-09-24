@@ -1,0 +1,668 @@
+/* Paleta de colores renovada - Temática Panadería */
+:root {
+  /* Colores principales - Inspirados en ingredientes naturales */
+  --primary-bread: #D2691E;        /* Color pan dorado */
+  --primary-dark: #8B4513;         /* Chocolate/masa cocida */
+  --primary-light: #F5DEB3;        /* Harina/crema */
+  --accent-gold: #FFD700;          /* Dorado brillante */
+  --accent-red: #DC143C;           /* Frutillas/cerasas */
+  
+  /* Colores secundarios */
+  --secondary-cream: #FFF8DC;      /* Crema pastelera */
+  --secondary-brown: #A0522D;      /* Canela */
+  --secondary-gold: #DAA520;       /* Oro viejo */
+  
+  /* Colores neutros */
+  --light-bg: #FEF9F3;            /* Fondo claro natural */
+  --light-card: #FFFFFF;          /* Fondo tarjetas */
+  --dark-text: #2C1810;           /* Texto oscuro */
+  --medium-gray: #8C7B6B;         /* Texto secundario */
+  
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, var(--primary-bread), var(--primary-dark));
+  --gradient-gold: linear-gradient(135deg, var(--accent-gold), var(--secondary-gold));
+  --gradient-light: linear-gradient(135deg, var(--primary-light), var(--secondary-cream));
+}
+
+/* Estilos generales - Reset y tipografía */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+  line-height: 1.7;
+  transition: all 0.3s ease;
+}
+
+/* Animaciones mejoradas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(218, 165, 32, 0.4);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(218, 165, 32, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(218, 165, 32, 0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes modal-pop { 
+  from { 
+    transform: scale(0.9) translateY(-20px); 
+    opacity: 0; 
+  } 
+  to { 
+    transform: scale(1) translateY(0); 
+    opacity: 1; 
+  } 
+}
+
+/* Utilidades de animación */
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.price-pulse {
+  animation: pulse 3s infinite;
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Header con gradiente mejorado */
+.bg-gradient {
+  background: linear-gradient(-45deg, var(--primary-dark), var(--primary-bread), var(--secondary-brown), var(--secondary-gold));
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  color: rgb(255, 255, 255);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white"/><circle cx="20" cy="20" r="0.5" fill="white"/><circle cx="80" cy="80" r="0.7" fill="white"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+}
+
+/* Navbar premium */
+.navbar {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-bread)) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 20px rgba(139, 69, 19, 0.1);
+}
+
+.navbar.scrolled {
+  background: rgba(139, 69, 19, 0.95) !important;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 30px rgba(139, 69, 19, 0.2);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--accent-gold) !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.navbar-nav .nav-link {
+  color: var(--primary-light) !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--accent-gold) !important;
+  transform: translateY(-2px);
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent-gold);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 80%;
+}
+
+/* Carrusel mejorado */
+.carousel-item {
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.carousel-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(139, 69, 19, 0.3), rgba(210, 105, 30, 0.2));
+}
+
+.carousel-caption {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: fadeInUp 1s ease;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 215, 0, 0.9);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 2rem;
+  transition: all 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background: var(--accent-gold);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Tarjetas de producto premium */
+.card {
+  border: none;
+  border-radius: 20px;
+  background: var(--light-card);
+  box-shadow: 0 8px 32px rgba(139, 69, 19, 0.08);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-gold);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(139, 69, 19, 0.15);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card img {
+  height: 240px;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.card-body {
+  padding: 1.5rem;
+  background: linear-gradient(to bottom, transparent, var(--primary-light) 150%);
+}
+
+.card-title {
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  color: var(--medium-gray);
+  line-height: 1.6;
+}
+
+/* Badges mejorados */
+.badge-nuevo {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--gradient-gold);
+  color: var(--dark-text);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+  z-index: 10;
+  animation: pulse 2s infinite;
+}
+
+/* Productos destacados */
+.featured-product {
+  border: 3px solid transparent;
+  background: linear-gradient(45deg, var(--light-card), var(--light-card)) padding-box,
+              var(--gradient-gold) border-box;
+  position: relative;
+}
+
+.featured-product::before {
+  content: "🏆 Destacado";
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: var(--gradient-gold);
+  color: var(--dark-text);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  z-index: 5;
+  box-shadow: 0 4px 15px rgba(218, 165, 32, 0.4);
+}
+
+/* Botones rediseñados */
+.btn-primary {
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(139, 69, 19, 0.3);
+}
+
+.btn-outline-light {
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50px;
+  color: white;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+
+/* Filtros mejorados */
+.btn[data-filter] {
+  border-radius: 25px;
+  margin: 0 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.btn[aria-pressed="true"],
+.btn.active { 
+  background: var(--gradient-gold);
+  color: var(--dark-text);
+  border: none;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(218, 165, 32, 0.3);
+  font-weight: 600;
+}
+
+/* Modal premium */
+.modal.show .modal-dialog { 
+  animation: modal-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); 
+}
+
+.modal-content {
+  border: none;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(139, 69, 19, 0.2);
+  background: var(--light-card);
+}
+
+.modal-header {
+  background: var(--gradient-primary);
+  color: white;
+  border-bottom: none;
+  padding: 1.5rem 2rem;
+}
+
+.modal-header .btn-close {
+  filter: invert(1);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.modal-header .btn-close:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Formulario de contacto premium */
+.contact-form {
+  background: rgba(255, 248, 220, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1);
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid transparent;
+  border-radius: 15px;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+  color: var(--dark-text);
+}
+
+.form-control:focus {
+  background: white;
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Tabla de precios premium */
+.table-hover tbody tr {
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+.table-hover tbody tr:hover {
+  background: linear-gradient(45deg, var(--primary-light), var(--secondary-cream));
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
+}
+
+.table-dark {
+  background: var(--gradient-primary) !important;
+  border: none;
+}
+
+/* Footer premium */
+footer {
+  background: linear-gradient(135deg, var(--primary-dark), var(--secondary-brown)) !important;
+  color: var(--primary-light);
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-gold);
+}
+
+footer h5 {
+  color: var(--accent-gold);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+footer a {
+  color: var(--primary-light);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--accent-gold);
+  transform: translateX(5px);
+}
+
+/* Efectos hover para iconos sociales CORREGIDOS */
+.bi-facebook:hover { 
+    color: #1877F2 !important; 
+    transform: scale(1.2); 
+}
+
+.bi-instagram:hover { 
+    color: #E4405F !important; 
+    transform: scale(1.2); 
+}
+
+.bi-whatsapp:hover { 
+    color: #25D366 !important; 
+    transform: scale(1.2); 
+}
+
+/* Smooth scrolling mejorado */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Mejoras de accesibilidad */
+.btn:focus,
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.3);
+}
+
+/* Responsive design mejorado */
+@media (max-width: 768px) {
+  .carousel-item {
+    height: 350px;
+  }
+  
+  .carousel-caption {
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
+  .display-4 {
+    font-size: 2rem;
+  }
+  
+  .card img {
+    height: 200px;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .btn-group .btn {
+    margin: 0.1rem;
+    border-radius: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-item {
+    height: 280px;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 45px;
+    height: 45px;
+    margin: 0 1rem;
+  }
+  
+  .contact-form {
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+  
+  .modal-dialog {
+    margin: 1rem;
+  }
+}
+
+/* Efectos de textura para fondo */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.02"><rect width="100" height="100" fill="none"/><path d="M0,0 Q50,20 100,0 L100,100 Q50,80 0,100 Z" fill="%238B4513"/></svg>');
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+/* Corrección para el navbar fijo */
+body {
+    padding-top: 76px; /* Compensa la altura del navbar fijo */
+}
+
+/* Asegurar que el header tenga suficiente espacio */
+header.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+
+/* Mejorar visibilidad del texto en el header */
+.bg-gradient h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+}
+
+.bg-gradient .lead {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* Mejorar visibilidad de los botones de filtro */
+.btn-outline-light {
+    border-width: 2px;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    margin: 0.25rem;
+}
+
+.btn-outline-light:hover {
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: var(--dark-text);
+    transform: translateY(-2px);
+}
+
+/* Asegurar que el carrusel no se solape */
+.carousel {
+    margin-top: 76px; /* Compensar navbar fijo */
+}
+
+/* Responsive adjustments para el padding del body */
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+    
+    .carousel {
+        margin-top: 70px;
+    }
+    
+    header.py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+}

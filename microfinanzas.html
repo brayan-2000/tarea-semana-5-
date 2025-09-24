@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ConfianzaMicro - Créditos para Emprendedores</title>
+  <!-- Bootstrap local -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <!-- CSS personalizado -->
+  <link rel="stylesheet" href="css/microfinanzas.css" />
+  <!-- Iconos de Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Lightbox para galería -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+</head>
+<body class="bg-light">
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">
+        <i class="fas fa-hand-holding-usd me-2"></i>ConfianzaMicro
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarMenu" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Créditos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#simulador">Simulador</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#galeria">Impacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="#beneficios">Beneficios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== BANNER PRINCIPAL MEJORADO ========== -->
+  <header class="py-5 text-center banner-microfinanzas">
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h1 class="display-4 fw-bold mb-3 text-white text-shadow">Productos de Crédito</h1>
+          <p class="lead mb-4 text-white">Soluciones financieras diseñadas para el crecimiento de tu negocio</p>
+          <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+            <a href="#productos" class="btn btn-light btn-lg px-4 hover-lift">Ver Productos</a>
+            <a href="#testimonios" class="btn btn-outline-light btn-lg px-4 hover-lift">Ver Testimonios</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== SECCIÓN DE PRODUCTOS ========== -->
+  <main class="container my-5" id="productos">
+    <div class="row mb-5">
+      <div class="col-12">
+        <h2 class="text-center mb-4">Nuestros Productos Crediticios</h2>
+        <p class="text-center text-muted">Compara y elige el crédito que mejor se adapte a tus necesidades</p>
+      </div>
+    </div>
+
+    <!-- Tabla responsive mejorada -->
+    <div class="table-responsive shadow-lg rounded-3">
+      <table class="table table-hover align-middle">
+        <thead class="table-success">
+          <tr>
+            <th><i class="fas fa-briefcase me-2"></i>Producto</th>
+            <th><i class="fas fa-money-bill-wave me-2"></i>Monto</th>
+            <th><i class="fas fa-calendar-alt me-2"></i>Plazo</th>
+            <th><i class="fas fa-percentage me-2"></i>Tasa (TEA)</th>
+            <th><i class="fas fa-clipboard-list me-2"></i>Requisitos</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="producto-row">
+            <td>
+              <strong>Microcrédito Emprendedor</strong>
+              <br><small class="text-muted">Ideal para pequeños negocios</small>
+            </td>
+            <td>Hasta S/ 20,000</td>
+            <td>6–24 meses</td>
+            <td><span class="badge bg-warning text-dark">28%–42%</span></td>
+            <td>DNI, RUC, flujo de caja</td>
+            <td><button class="btn btn-outline-success btn-sm simular-btn" data-producto="Microcrédito Emprendedor">Simular</button></td>
+          </tr>
+          <tr class="producto-row">
+            <td>
+              <strong>Capital de Trabajo</strong>
+              <br><small class="text-muted">Para optimizar tu operación</small>
+            </td>
+            <td>Hasta S/ 50,000</td>
+            <td>6–36 meses</td>
+            <td><span class="badge bg-success">24%–38%</span></td>
+            <td>DNI, ventas, garantías</td>
+            <td><button class="btn btn-outline-success btn-sm simular-btn" data-producto="Capital de Trabajo">Simular</button></td>
+          </tr>
+          <tr class="producto-row">
+            <td>
+              <strong>Mejoras del Negocio</strong>
+              <br><small class="text-muted">Inversión en infraestructura</small>
+            </td>
+            <td>Hasta S/ 80,000</td>
+            <td>12–48 meses</td>
+            <td><span class="badge bg-info">22%–35%</span></td>
+            <td>DNI, flujo, fotos del local</td>
+            <td><button class="btn btn-outline-success btn-sm simular-btn" data-producto="Mejoras del Negocio">Simular</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="my-5">
+
+    <!-- ========== SIMULADOR DE CRÉDITOS ========== -->
+    <section id="simulador" class="row g-4">
+      <div class="col-lg-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-success text-white">
+            <h3 class="h5 mb-0"><i class="fas fa-calculator me-2"></i>Simulador de Crédito</h3>
+          </div>
+          <div class="card-body">
+            <form id="formSimulador" class="row gy-3">
+              <div class="col-12">
+                <label class="form-label fw-bold">Producto</label>
+                <select id="productoSelect" class="form-select" required>
+                  <option value="">Seleccione un producto</option>
+                  <option value="20,30,24">Microcrédito Emprendedor</option>
+                  <option value="50,28,36">Capital de Trabajo</option>
+                  <option value="80,25,48">Mejoras del Negocio</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-bold">Monto (S/)</label>
+                <input id="monto" type="number" class="form-control" placeholder="Ej: 10000" min="1000" max="100000" required />
+                <div class="form-text">Mínimo: S/ 1,000 - Máximo: S/ 100,000</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-bold">Tasa anual (TEA %)</label>
+                <input id="tasa" type="number" step="0.01" class="form-control" placeholder="Ej: 30" min="10" max="50" required />
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-bold">Plazo (meses)</label>
+                <input id="meses" type="number" class="form-control" placeholder="Ej: 24" min="6" max="60" required />
+              </div>
+              <div class="col-12 d-grid">
+                <button class="btn btn-success btn-lg" type="submit">
+                  <i class="fas fa-calculator me-2"></i>Calcular Cuota
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-primary text-white">
+            <h3 class="h5 mb-0"><i class="fas fa-chart-bar me-2"></i>Resultado de Simulación</h3>
+          </div>
+          <div class="card-body text-center">
+            <div class="resultado-simulacion">
+              <p class="mb-2">Cuota mensual aproximada:</p>
+              <p id="cuota" class="display-4 fw-bold text-success">S/ 0.00</p>
+              
+              <div class="detalles-cuota mt-4">
+                <div class="row text-start">
+                  <div class="col-6">
+                    <p class="mb-1"><small>Monto solicitado:</small></p>
+                    <p class="fw-bold" id="montoResultado">S/ 0.00</p>
+                  </div>
+                  <div class="col-6">
+                    <p class="mb-1"><small>Total a pagar:</small></p>
+                    <p class="fw-bold" id="totalPagar">S/ 0.00</p>
+                  </div>
+                  <div class="col-6">
+                    <p class="mb-1"><small>Tasa anual (TEA):</small></p>
+                    <p class="fw-bold" id="tasaResultado">0%</p>
+                  </div>
+                  <div class="col-6">
+                    <p class="mb-1"><small>Plazo:</small></p>
+                    <p class="fw-bold" id="plazoResultado">0 meses</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted">* Cálculo referencial con sistema de amortización francés.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECCIÓN DE TESTIMONIOS ========== -->
+    <section id="testimonios" class="my-5 pt-5">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <h2>Testimonios de Nuestros Clientes</h2>
+          <p class="text-muted">Historias reales de emprendedores que han crecido con nosotros</p>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm testimonial-card">
+            <div class="card-body text-center p-4">
+              <div class="testimonial-img mb-3">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&q=80" 
+                     alt="María López" class="rounded-circle">
+              </div>
+              <h5 class="card-title">María López</h5>
+              <p class="card-text text-muted">Dueña de Panadería "Dulce Hogar"</p>
+              <div class="testimonial-content">
+                <p>"Gracias al microcrédito pude comprar un horno industrial y duplicar mi producción. Ahora tengo 3 empleados más."</p>
+              </div>
+              <div class="rating mb-3">
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm testimonial-card">
+            <div class="card-body text-center p-4">
+              <div class="testimonial-img mb-3">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&q=80" 
+                     alt="Carlos Rodríguez" class="rounded-circle">
+              </div>
+              <h5 class="card-title">Carlos Rodríguez</h5>
+              <p class="card-text text-muted">Propietario de Taller Mecánico</p>
+              <div class="testimonial-content">
+                <p>"Con el crédito de capital de trabajo pude comprar repuestos al por mayor y aumentar mis márgenes de ganancia en un 40%."</p>
+              </div>
+              <div class="rating mb-3">
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star-half-alt text-warning"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm testimonial-card">
+            <div class="card-body text-center p-4">
+              <div class="testimonial-img mb-3">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&q=80" 
+                     alt="Ana Mendoza" class="rounded-circle">
+              </div>
+              <h5 class="card-title">Ana Mendoza</h5>
+              <p class="card-text text-muted">Dueña de Boutique "Moda Elegante"</p>
+              <div class="testimonial-content">
+                <p>"El crédito para mejoras me permitió renovar mi local y aumentar mis ventas en un 60%. La asesoría fue excelente."</p>
+              </div>
+              <div class="rating mb-3">
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+                <i class="fas fa-star text-warning"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GALERÍA DE IMPACTO ========== -->
+    <section id="galeria" class="my-5 pt-5">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <h2>Nuestro Impacto</h2>
+          <p class="text-muted">Casos de éxito que demuestran nuestro compromiso con los emprendedores</p>
+        </div>
+      </div>
+      
+      <div class="row g-3">
+        <div class="col-md-4">
+          <a href="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+             data-lightbox="impacto" data-title="Negocio familiar transformado">
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                   alt="Negocio familiar" class="img-fluid rounded shadow-sm">
+              <div class="gallery-overlay">
+                <div class="gallery-text">
+                  <h5>Negocio Familiar</h5>
+                  <p>Antes y después de nuestro apoyo</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        
+        <div class="col-md-4">
+          <a href="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+             data-lightbox="impacto" data-title="Emprendimiento textil en crecimiento">
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                   alt="Emprendimiento textil" class="img-fluid rounded shadow-sm">
+              <div class="gallery-overlay">
+                <div class="gallery-text">
+                  <h5>Taller Textil</h5>
+                  <p>Creció de 2 a 10 empleados</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        
+        <div class="col-md-4">
+          <a href="https://images.unsplash.com/photo-1556742044-3f2b0ee2c559?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+             data-lightbox="impacto" data-title="Restaurante familiar expandido">
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1556742044-3f2b0ee2c559?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                   alt="Restaurante familiar" class="img-fluid rounded shadow-sm">
+              <div class="gallery-overlay">
+                <div class="gallery-text">
+                  <h5>Restaurante Familiar</h5>
+                  <p>Duplicó su capacidad de atención</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        
+        <div class="col-md-6">
+          <a href="https://images.unsplash.com/photo-1556742044-3e5de97d3d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+             data-lightbox="impacto" data-title="Tienda de abarrotes modernizada">
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1556742044-3e5de97d3d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                   alt="Tienda de abarrotes" class="img-fluid rounded shadow-sm">
+              <div class="gallery-overlay">
+                <div class="gallery-text">
+                  <h5>Tienda de Abarrotes</h5>
+                  <p>Modernización completa del local</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        
+        <div class="col-md-6">
+          <a href="https://images.unsplash.com/photo-1556742044-3e5de97d3d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+             data-lightbox="impacto" data-title="Taller de costura ampliado">
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                   alt="Taller de costura" class="img-fluid rounded shadow-sm">
+              <div class="gallery-overlay">
+                <div class="gallery-text">
+                  <h5>Taller de Costura</h5>
+                  <p>Ampliación de instalaciones</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SECCIÓN DE BENEFICIOS ========== -->
+    <section id="beneficios" class="my-5 pt-5">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <h2>Beneficios de Nuestros Créditos</h2>
+          <p class="text-muted">Ventajas exclusivas para nuestros clientes</p>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm benefit-card">
+            <div class="card-body text-center p-4">
+              <div class="benefit-icon mb-3">
+                <i class="fas fa-rocket fa-3x text-primary"></i>
+              </div>
+              <h5 class="card-title">Aprobación Rápida</h5>
+              <p class="card-text">Respuesta en 48 horas hábiles con documentación completa.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm benefit-card">
+            <div class="card-body text-center p-4">
+              <div class="benefit-icon mb-3">
+                <i class="fas fa-hand-holding-usd fa-3x text-success"></i>
+              </div>
+              <h5 class="card-title">Flexibilidad de Pago</h5>
+              <p class="card-text">Plazos adaptables a tu flujo de caja y temporadas.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm benefit-card">
+            <div class="card-body text-center p-4">
+              <div class="benefit-icon mb-3">
+                <i class="fas fa-user-shield fa-3x text-warning"></i>
+              </div>
+              <h5 class="card-title">Asesoría Personalizada</h5>
+              <p class="card-text">Acompañamiento durante todo el proceso crediticio.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MAPA DE OFICINAS INTERACTIVO ========== -->
+    <section id="ubicacion" class="my-5 pt-5">
+      <div class="row">
+        <div class="col-12 text-center mb-4">
+          <h2>Nuestras Oficinas</h2>
+          <p class="text-muted">Visítanos en nuestras sucursales a nivel nacional</p>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-8 mb-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body p-0">
+              <div id="mapa-interactivo" class="mapa-container">
+                <!-- Mapa SVG interactivo -->
+                <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Fondo del mapa simplificado de Lima -->
+                  <rect x="0" y="0" width="800" height="500" fill="#e8f4f8" />
+                  
+                  <!-- Zonas aproximadas -->
+                  <path d="M100,100 L300,80 L350,200 L150,220 Z" fill="#a8d5e5" stroke="#4a90a4" stroke-width="2" 
+                         class="zona-mapa" data-zona="Centro"/>
+                  <path d="M400,50 L600,70 L650,180 L450,200 Z" fill="#a8d5e5" stroke="#4a90a4" stroke-width="2" 
+                         class="zona-mapa" data-zona="Norte"/>
+                  <path d="M200,250 L400,230 L450,350 L250,370 Z" fill="#a8d5e5" stroke="#4a90a4" stroke-width="2" 
+                         class="zona-mapa" data-zona="Este"/>
+                  <path d="M500,220 L700,200 L750,320 L550,340 Z" fill="#a8d5e5" stroke="#4a90a4" stroke-width="2" 
+                         class="zona-mapa" data-zona="Sur"/>
+                  
+                  <!-- Marcadores de sucursales -->
+                  <g class="sucursal-marker" data-sucursal="Central">
+                    <circle cx="200" cy="150" r="15" fill="#198754" class="marker-point"/>
+                    <text x="200" y="145" text-anchor="middle" fill="white" font-weight="bold">1</text>
+                  </g>
+                  
+                  <g class="sucursal-marker" data-sucursal="Norte">
+                    <circle cx="500" cy="120" r="15" fill="#198754" class="marker-point"/>
+                    <text x="500" y="115" text-anchor="middle" fill="white" font-weight="bold">2</text>
+                  </g>
+                  
+                  <g class="sucursal-marker" data-sucursal="Este">
+                    <circle cx="300" cy="300" r="15" fill="#198754" class="marker-point"/>
+                    <text x="300" y="295" text-anchor="middle" fill="white" font-weight="bold">3</text>
+                  </g>
+                  
+                  <g class="sucursal-marker" data-sucursal="Sur">
+                    <circle cx="600" cy="270" r="15" fill="#198754" class="marker-point"/>
+                    <text x="600" y="265" text-anchor="middle" fill="white" font-weight="bold">4</text>
+                  </g>
+                  
+                  <!-- Leyenda -->
+                  <rect x="20" y="400" width="200" height="80" fill="white" stroke="#ccc" stroke-width="1" rx="5"/>
+                  <text x="30" y="420" font-weight="bold">Leyenda:</text>
+                  <circle cx="30" cy="440" r="8" fill="#198754"/>
+                  <text x="45" y="445">Sucursal ConfianzaMicro</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-header bg-success text-white">
+              <h5 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Información de Sucursales</h5>
+            </div>
+            <div class="card-body">
+              <div id="sucursal-info">
+                <p class="text-center text-muted">Haz clic en un marcador del mapa para ver detalles</p>
+              </div>
+              
+              <div class="sucursal-details d-none" id="sucursal-central">
+                <h6>Oficina Central</h6>
+                <p class="mb-1"><i class="fas fa-map-marker-alt text-danger me-2"></i>Plaza San Martín, Lima</p>
+                <p class="mb-1"><i class="fas fa-phone text-info me-2"></i>(01) 640-0001</p>
+                <p class="mb-1"><i class="fas fa-clock text-warning me-2"></i>Lun-Vie: 8:00 am - 6:00 pm</p>
+                <p class="mb-0"><i class="fas fa-user text-primary me-2"></i>Gerente: Luis Fernández</p>
+              </div>
+              
+              <div class="sucursal-details d-none" id="sucursal-norte">
+                <h6>Sucursal Norte</h6>
+                <p class="mb-1"><i class="fas fa-map-marker-alt text-danger me-2"></i>Av. Los Olivos 123, Los Olivos</p>
+                <p class="mb-1"><i class="fas fa-phone text-info me-2"></i>(01) 640-0002</p>
+                <p class="mb-1"><i class="fas fa-clock text-warning me-2"></i>Lun-Vie: 8:30 am - 5:30 pm</p>
+                <p class="mb-0"><i class="fas fa-user text-primary me-2"></i>Coordinadora: Marta Gutierrez</p>
+              </div>
+              
+              <div class="sucursal-details d-none" id="sucursal-este">
+                <h6>Sucursal Este</h6>
+                <p class="mb-1"><i class="fas fa-map-marker-alt text-danger me-2"></i>Av. La Molina 456, La Molina</p>
+                <p class="mb-1"><i class="fas fa-phone text-info me-2"></i>(01) 640-0003</p>
+                <p class="mb-1"><i class="fas fa-clock text-warning me-2"></i>Lun-Vie: 9:00 am - 6:00 pm</p>
+                <p class="mb-0"><i class="fas fa-user text-primary me-2"></i>Coordinador: Javier Rojas</p>
+              </div>
+              
+              <div class="sucursal-details d-none" id="sucursal-sur">
+                <h6>Sucursal Sur</h6>
+                <p class="mb-1"><i class="fas fa-map-marker-alt text-danger me-2"></i>Av. Jorge Chávez 789, Surco</p>
+                <p class="mb-1"><i class="fas fa-phone text-info me-2"></i>(01) 640-0004</p>
+                <p class="mb-1"><i class="fas fa-clock text-warning me-2"></i>Lun-Vie: 8:00 am - 5:00 pm</p>
+                <p class="mb-0"><i class="fas fa-user text-primary me-2"></i>Coordinadora: Carmen Velasco</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FORMULARIO DE CONTACTO ========== -->
+    <section id="contacto" class="my-5 pt-5">
+      <div class="row">
+        <div class="col-12 text-center mb-4">
+          <h2>¿Necesitas Asesoría?</h2>
+          <p class="text-muted">Contáctanos y un especialista se comunicará contigo</p>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow-sm">
+            <div class="card-body p-4">
+              <form id="formContacto">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Nombre completo</label>
+                    <input type="text" class="form-control" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Teléfono</label>
+                    <input type="tel" class="form-control" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Producto de interés</label>
+                    <select class="form-select" required>
+                      <option value="">Seleccione un producto</option>
+                      <option>Microcrédito Emprendedor</option>
+                      <option>Capital de Trabajo</option>
+                      <option>Mejoras del Negocio</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Mensaje</label>
+                    <textarea class="form-control" rows="4" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" required>
+                      <label class="form-check-label">
+                        Acepto la política de privacidad
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-success w-100">Enviar Consulta</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <h5>ConfianzaMicro</h5>
+          <p>Tu socio financiero para hacer crecer tu negocio.</p>
+          <div class="social-icons">
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h5>Enlaces Rápidos</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white-50">Inicio</a></li>
+            <li><a href="#productos" class="text-white-50">Productos</a></li>
+            <li><a href="#testimonios" class="text-white-50">Testimonios</a></li>
+            <li><a href="#contacto" class="text-white-50">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h5>Contacto</h5>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt me-2"></i>Plaza San Martín, Lima</li>
+            <li><i class="fas fa-phone me-2"></i>(01) 640-0001</li>
+            <li><i class="fas fa-envelope me-2"></i>info@confianzamicro.pe</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="row">
+        <div class="col-md-6">
+          <p class="mb-0">&copy; 2023 ConfianzaMicro. Todos los derechos reservados.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#" class="text-white-50 me-3">Política de Privacidad</a>
+          <a href="#" class="text-white-50">Términos y Condiciones</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS local -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <!-- Lightbox JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+  <!-- JS personalizado -->
+  <script src="js/microfinanzas.js"></script>
+</body>
+</html>

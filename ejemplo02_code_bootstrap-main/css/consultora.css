@@ -1,0 +1,632 @@
+/* consultora.css - CSS mejorado para consultora tecnológica */
+
+/* ========== VARIABLES Y CONFIGURACIÓN ========== */
+:root {
+  --primary: #4361ee;           /* Azul vibrante moderno */
+  --primary-dark: #3a0ca3;      /* Azul oscuro profundo */
+  --primary-light: #4895ef;     /* Azul claro */
+  --secondary: #7209b7;         /* Púrpura moderno */
+  --accent: #f72585;            /* Rosa vibrante */
+  --success: #4cc9f0;           /* Azul turquesa */
+  --warning: #f8961e;           /* Naranja cálido */
+  --light: #f8f9fa;             /* Fondo claro */
+  --dark: #212529;              /* Texto oscuro */
+  --gradient-primary: linear-gradient(135deg, #4361ee, #3a0ca3);
+  --gradient-secondary: linear-gradient(135deg, #7209b7, #560bad);
+  --gradient-accent: linear-gradient(135deg, #f72585, #b5179e);
+  --gradient-success: linear-gradient(135deg, #4cc9f0, #4895ef);
+  --gradient-warning: linear-gradient(135deg, #f8961e, #f3722c);
+  --gradient-dark: linear-gradient(135deg, #212529, #343a40);
+  --shadow: 0 10px 30px rgba(0,0,0,0.1);
+  --shadow-hover: 0 15px 40px rgba(0,0,0,0.2);
+  --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --border-radius: 15px;
+}
+
+/* ========== ESTILOS GENERALES ========== */
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  padding-top: 76px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e3f2fd 100%);
+  color: var(--dark);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+section {
+  padding: 80px 0;
+}
+
+/* ========== NAVBAR MEJORADA ========== */
+.navbar {
+  background: var(--gradient-primary) !important;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+  padding: 15px 0;
+}
+
+.navbar-scrolled {
+  background: rgba(67, 97, 238, 0.95) !important;
+  backdrop-filter: blur(10px);
+  padding: 10px 0;
+}
+
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.8rem;
+  background: linear-gradient(45deg, #fff, #f0f8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: var(--transition);
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.nav-link {
+  font-weight: 600;
+  margin: 0 10px;
+  border-radius: 50px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: var(--transition);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::before {
+  width: 80%;
+}
+
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+/* ========== HERO SECTION ========== */
+.bg-gradient {
+  background: var(--gradient-primary) !important;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0;
+  color: white;
+  text-align: center;
+}
+
+.bg-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><circle cx="20" cy="20" r="8" fill="white"/><circle cx="80" cy="40" r="12" fill="white"/><circle cx="40" cy="80" r="10" fill="white"/></svg>');
+  animation: float 20s infinite linear;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-10px, -10px); }
+  100% { transform: translate(0, 0); }
+}
+
+.bg-gradient h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #fff, #f0f8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInDown 1s ease;
+}
+
+.bg-gradient .lead {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease 0.2s both;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== CARDS DE SERVICIOS ========== */
+.card {
+  border: none;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  overflow: hidden;
+  position: relative;
+  background: white;
+  box-shadow: var(--shadow);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(67, 97, 238, 0.1), transparent);
+  transition: left 0.7s;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.shadow-sm {
+  box-shadow: var(--shadow) !important;
+}
+
+.card-icon {
+  background: var(--gradient-primary);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -40px auto 20px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+  transition: var(--transition);
+}
+
+.card:hover .card-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: var(--gradient-accent);
+}
+
+.card-icon i {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.card-title {
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 15px;
+  transition: var(--transition);
+}
+
+.card:hover .card-title {
+  color: var(--accent);
+}
+
+.card-text {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.badge {
+  margin: 2px;
+  font-size: 0.7rem;
+  background: var(--gradient-success);
+  border: none;
+  transition: var(--transition);
+}
+
+.badge:hover {
+  transform: scale(1.1);
+}
+
+/* ========== PLANES DE PRECIOS ========== */
+.pricing-card {
+  border: none;
+  border-radius: 20px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  background: white;
+  box-shadow: var(--shadow);
+  height: 100%;
+}
+
+.pricing-card.featured {
+  transform: scale(1.05);
+  border: 3px solid var(--primary);
+  box-shadow: 0 15px 40px rgba(67, 97, 238, 0.2);
+}
+
+.ribbon {
+  position: absolute;
+  top: 20px;
+  right: -30px;
+  background: var(--accent);
+  color: white;
+  padding: 5px 40px;
+  transform: rotate(45deg);
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 1;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.pricing-card .card-header {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 25px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card .card-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.pricing-card.featured .card-header {
+  background: var(--gradient-accent);
+}
+
+.price {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.price .amount {
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+}
+
+.price .amount.custom {
+  font-size: 2rem;
+}
+
+.price .currency {
+  font-size: 1.5rem;
+  vertical-align: super;
+  color: rgba(255,255,255,0.9);
+}
+
+.price .period {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.pricing-card .card-body {
+  padding: 30px;
+}
+
+.pricing-card ul {
+  padding-left: 0;
+  margin-bottom: 30px;
+}
+
+.pricing-card ul li {
+  list-style: none;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  padding-left: 25px;
+  transition: var(--transition);
+}
+
+.pricing-card ul li:hover {
+  transform: translateX(5px);
+  color: var(--primary);
+}
+
+.pricing-card ul li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--success);
+  font-weight: bold;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+}
+
+.pricing-card.featured:hover {
+  transform: scale(1.05) translateY(-10px);
+}
+
+.btn {
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: var(--gradient-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+}
+
+.btn-success {
+  background: var(--gradient-success);
+  border: none;
+}
+
+.btn-success:hover {
+  background: var(--gradient-warning);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(76, 201, 240, 0.3);
+}
+
+.btn-outline-secondary {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+
+.btn-outline-secondary:hover {
+  background: var(--gradient-secondary);
+  border-color: transparent;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(114, 9, 183, 0.3);
+}
+
+/* ========== FORMULARIO DE CONTACTO ========== */
+.form-control {
+  border-radius: 10px;
+  padding: 12px 15px;
+  border: 2px solid #e9ecef;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+  transform: translateY(-2px);
+}
+
+.form-select {
+  border-radius: 10px;
+  padding: 12px 15px;
+  border: 2px solid #e9ecef;
+  transition: var(--transition);
+}
+
+.form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+}
+
+.btn-secondary {
+  background: var(--gradient-secondary);
+  border: none;
+}
+
+.btn-secondary:hover {
+  background: var(--gradient-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(114, 9, 183, 0.3);
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: var(--gradient-dark);
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><polygon points="50,10 70,40 95,45 75,65 80,90 50,75 20,90 25,65 5,45 30,40" fill="white"/></svg>');
+}
+
+footer small {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== ANIMACIONES SCROLL ========== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== EFECTOS DE PARTICULAS ========== */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: float-particle 15s infinite linear;
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .bg-gradient h1 {
+    font-size: 2.5rem;
+  }
+  
+  .bg-gradient .lead {
+    font-size: 1.2rem;
+  }
+  
+  .pricing-card.featured {
+    transform: scale(1);
+    margin: 20px 0;
+  }
+  
+  .pricing-card.featured:hover {
+    transform: translateY(-10px);
+  }
+  
+  section {
+    padding: 60px 0;
+  }
+  
+  .card-icon {
+    width: 60px;
+    height: 60px;
+    margin: -30px auto 15px;
+  }
+  
+  .card-icon i {
+    font-size: 1.8rem;
+  }
+}
+
+/* ========== UTILIDADES ADICIONALES ========== */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.border-gradient {
+  border: 2px solid;
+  border-image: var(--gradient-primary) 1;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ========== EFECTO GLOW ========== */
+.glow {
+  box-shadow: 0 0 20px rgba(67, 97, 238, 0.5);
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(67, 97, 238, 0.5);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(67, 97, 238, 0.8);
+  }
+}
