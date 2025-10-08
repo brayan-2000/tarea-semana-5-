@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TechPartner - Consultora de Servicios Informáticos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <style>
+    /* ========== VARIABLES Y CONFIGURACIÓN ========== */
+    :root {
+      --primary: #4361ee;           /* Azul vibrante moderno */
+      --primary-dark: #3a0ca3;      /* Azul oscuro profundo */
+      --primary-light: #4895ef;     /* Azul claro */
+      --secondary: #7209b7;         /* Púrpura moderno */
+      --accent: #f72585;            /* Rosa vibrante */
+      --success: #4cc9f0;           /* Azul turquesa */
+      --warning: #f8961e;           /* Naranja cálido */
+      --light: #f8f9fa;             /* Fondo claro */
+      --dark: #212529;              /* Texto oscuro */
+      --gradient-primary: linear-gradient(135deg, #4361ee, #3a0ca3);
+      --gradient-secondary: linear-gradient(135deg, #7209b7, #560bad);
+      --gradient-accent: linear-gradient(135deg, #f72585, #b5179e);
+      --gradient-success: linear-gradient(135deg, #4cc9f0, #4895ef);
+      --gradient-dark: linear-gradient(135deg, #212529, #343a40);
+      --shadow: 0 10px 30px rgba(0,0,0,0.1);
+      --shadow-hover: 0 15px 40px rgba(0,0,0,0.2);
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ========== ESTILOS GENERALES ========== */
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      padding-top: 76px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e3f2fd 100%);
+      color: var(--dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    /* ========== NAVBAR MEJORADA ========== */
+    .navbar {
+      background: var(--gradient-primary) !important;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      padding: 15px 0;
+    }
+
+    .navbar-scrolled {
+      background: rgba(67, 97, 238, 0.95) !important;
+      backdrop-filter: blur(10px);
+      padding: 10px 0;
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(45deg, #fff, #f0f8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-link {
+      font-weight: 600;
+      margin: 0 10px;
+      border-radius: 50px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: white;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover::before {
+      width: 80%;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .hero-section {
+      background: var(--gradient-primary);
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><circle cx="20" cy="20" r="8" fill="white"/><circle cx="80" cy="40" r="12" fill="white"/><circle cx="40" cy="80" r="10" fill="white"/></svg>');
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #fff, #f0f8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(247, 37, 133, 0.4);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(247, 37, 133, 0.6);
+      color: white;
+    }
+
+    .wave-divider {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .wave-divider svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 100px;
+    }
+
+    .wave-divider .shape-fill {
+      fill: #f8f9fa;
+    }
+
+    /* ========== ANIMACIÓN DE TYPING ========== */
+    .animate-typing {
+      overflow: hidden;
+      border-right: 3px solid white;
+      white-space: nowrap;
+      margin: 0 auto;
+      animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: white }
+    }
+
+    /* ========== CARDS DE SERVICIOS ========== */
+    .service-card {
+      border: none;
+      border-radius: 20px;
+      transition: var(--transition);
+      overflow: hidden;
+      position: relative;
+      background: white;
+      box-shadow: var(--shadow);
+      height: 100%;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(67, 97, 238, 0.1), transparent);
+      transition: left 0.7s;
+    }
+
+    .service-card:hover::before {
+      left: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card-icon {
+      background: var(--gradient-primary);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -40px auto 20px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+      transition: var(--transition);
+    }
+
+    .service-card:hover .card-icon {
+      transform: scale(1.1) rotate(5deg);
+      background: var(--gradient-accent);
+    }
+
+    .card-icon i {
+      font-size: 2.5rem;
+      color: white;
+    }
+
+    .service-card .card-title {
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 15px;
+    }
+
+    .service-card .card-text {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .tech-tags .badge {
+      margin: 2px;
+      font-size: 0.7rem;
+      background: var(--gradient-success);
+      border: none;
+    }
+
+    /* ========== SECCIÓN DE ESTADÍSTICAS ========== */
+    .stats-section {
+      background: var(--gradient-dark);
+      position: relative;
+      overflow: hidden;
+      color: white;
+      padding: 80px 0;
+    }
+
+    .stats-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><rect x="10" y="10" width="80" height="80" fill="white" stroke="white" stroke-width="2"/></svg>');
+    }
+
+    .stat-item {
+      padding: 30px 20px;
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .counter {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #ffffff, #e3f2fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .stat-item p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* ========== PLANES DE PRECIOS ========== */
+    .pricing-section {
+      background: #f8f9fa;
+    }
+
+    .pricing-card {
+      border: none;
+      border-radius: 20px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      background: white;
+      box-shadow: var(--shadow);
+      height: 100%;
+    }
+
+    .pricing-card.featured {
+      transform: scale(1.05);
+      border: 3px solid var(--primary);
+      box-shadow: 0 15px 40px rgba(67, 97, 238, 0.2);
+    }
+
+    .ribbon {
+      position: absolute;
+      top: 20px;
+      right: -30px;
+      background: var(--accent);
+      color: white;
+      padding: 5px 40px;
+      transform: rotate(45deg);
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 1;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .pricing-card .card-header {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    .pricing-card.featured .card-header {
+      background: var(--gradient-accent);
+    }
+
+    .price {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .price .amount {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    .price .amount.custom {
+      font-size: 2rem;
+    }
+
+    .price .currency {
+      font-size: 1.5rem;
+      vertical-align: super;
+      color: var(--primary);
+    }
+
+    .price .period {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .pricing-card .card-body {
+      padding: 30px;
+    }
+
+    .pricing-card ul {
+      padding-left: 0;
+      margin-bottom: 30px;
+    }
+
+    .pricing-card ul li {
+      list-style: none;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .pricing-card ul li:before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: bold;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .pricing-card.featured:hover {
+      transform: scale(1.05) translateY(-10px);
+    }
+
+    .btn-pricing {
+      border-radius: 50px;
+      padding: 10px 20px;
+      font-weight: 600;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    /* ========== FORMULARIO DE CONTACTO ========== */
+    .contact-section {
+      background: white;
+    }
+
+    .contact-form {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-control {
+      border-radius: 10px;
+      padding: 12px 15px;
+      border: 2px solid #e9ecef;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+    }
+
+    .btn-submit {
+      background: var(--gradient-primary);
+      border: none;
+      border-radius: 50px;
+      padding: 12px 30px;
+      font-weight: 600;
+      transition: var(--transition);
+      color: white;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+      background: var(--gradient-accent);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--gradient-dark);
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    .social-icons {
+      margin-bottom: 20px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      text-align: center;
+      line-height: 40px;
+      margin: 0 10px;
+      transition: var(--transition);
+    }
+
+    .social-icons a:hover {
+      background: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    /* ========== ANIMACIONES SCROLL ========== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .pricing-card.featured {
+        transform: scale(1);
+        margin: 20px 0;
+      }
+      
+      .pricing-card.featured:hover {
+        transform: translateY(-10px);
+      }
+      
+      section {
+        padding: 60px 0;
+      }
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">TechPartner</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#m"><span class="navbar-toggler-icon"></span></button>
+      <div id="m" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#precios">Precios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title animate__animated animate__fadeInDown">Consultoría y Desarrollo de Software</h1>
+        <p class="hero-subtitle animate__animated animate__fadeInUp">Web, Móvil, BI/Analytics y Cloud</p>
+        <a href="#contacto" class="cta-button animate__animated animate__pulse animate__delay-1s">Comenzar Proyecto</a>
+      </div>
+    </div>
+    <div class="wave-divider">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <section class="services-section">
+      <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold mb-3">Nuestros Servicios</h2>
+        <p class="lead">Soluciones tecnológicas innovadoras para impulsar tu negocio</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="card service-card h-100">
+            <div class="card-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title">Desarrollo Web</h5>
+              <p class="card-text">Aplicaciones web modernas y responsivas con las últimas tecnologías.</p>
+              <div class="tech-tags">
+                <span class="badge">React</span>
+                <span class="badge">Angular</span>
+                <span class="badge">Vue.js</span>
+                <span class="badge">Node.js</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card service-card h-100">
+            <div class="card-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title">Apps Móviles</h5>
+              <p class="card-text">Aplicaciones nativas e híbridas para iOS y Android.</p>
+              <div class="tech-tags">
+                <span class="badge">Kotlin</span>
+                <span class="badge">Swift</span>
+                <span class="badge">Flutter</span>
+                <span class="badge">React Native</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card service-card h-100">
+            <div class="card-icon">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title">BI & Analytics</h5>
+              <p class="card-text">Dashboards interactivos y análisis de datos para la toma de decisiones.</p>
+              <div class="tech-tags">
+                <span class="badge">Power BI</span>
+                <span class="badge">Tableau</span>
+                <span class="badge">Python</span>
+                <span class="badge">SQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card service-card h-100">
+            <div class="card-icon">
+              <i class="fas fa-cloud"></i>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title">Cloud & DevOps</h5>
+              <p class="card-text">Infraestructura en la nube y automatización de procesos de desarrollo.</p>
+              <div class="tech-tags">
+                <span class="badge">AWS</span>
+                <span class="badge">Azure</span>
+                <span class="badge">Docker</span>
+                <span class="badge">Kubernetes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="precios" class="pricing-section">
+      <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold mb-3">Planes de Servicio</h2>
+        <p class="lead">Elige el plan que mejor se adapte a las necesidades de tu empresa</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card pricing-card h-100">
+            <div class="card-header">
+              <h3 class="h4">Start</h3>
+              <div class="price">
+                <span class="currency">S/</span>
+                <span class="amount">1,200</span>
+              </div>
+              <p class="period">Pago único</p>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Landing page responsiva</li>
+                <li>Hasta 5 secciones</li>
+                <li>1 formulario de contacto</li>
+                <li>Optimización SEO básica</li>
+                <li>Soporte por 30 días</li>
+              </ul>
+              <a class="btn btn-outline-primary btn-pricing" href="#contacto">Solicitar</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card pricing-card h-100 featured">
+            <div class="ribbon">Popular</div>
+            <div class="card-header">
+              <h3 class="h4">Business</h3>
+              <div class="price">
+                <span class="currency">S/</span>
+                <span class="amount">3,500</span>
+              </div>
+              <p class="period">Pago único</p>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Sitio web corporativo</li>
+                <li>Hasta 10 páginas</li>
+                <li>Integraciones básicas</li>
+                <li>Panel de administración</li>
+                <li>Optimización SEO avanzada</li>
+                <li>Soporte por 60 días</li>
+              </ul>
+              <a class="btn btn-primary btn-pricing" href="#contacto">Solicitar</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card pricing-card h-100">
+            <div class="card-header">
+              <h3 class="h4">Enterprise</h3>
+              <div class="price">
+                <span class="amount custom">Personalizado</span>
+              </div>
+              <p class="period">Cotización a medida</p>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Aplicaciones web complejas</li>
+                <li>Apps móviles nativas</li>
+                <li>Soluciones BI & Analytics</li>
+                <li>Infraestructura Cloud</li>
+                <li>Integraciones avanzadas</li>
+                <li>Soporte dedicado</li>
+              </ul>
+              <a class="btn btn-outline-primary btn-pricing" href="#contacto">Solicitar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+      <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold mb-3">Contáctanos</h2>
+        <p class="lead">¿Tienes un proyecto en mente? Hablemos sobre cómo podemos ayudarte</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="contact-form">
+            <form class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Nombre</label>
+                <input class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Empresa</label>
+                <input class="form-control">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Teléfono</label>
+                <input type="tel" class="form-control">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Interés</label>
+                <select class="form-select">
+                  <option>Desarrollo Web</option>
+                  <option>Apps Móviles</option>
+                  <option>BI/Analytics</option>
+                  <option>Cloud/DevOps</option>
+                  <option>Consultoría General</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Mensaje</label>
+                <textarea class="form-control" rows="5" placeholder="Describe tu proyecto..."></textarea>
+              </div>
+              <div class="col-12 text-center">
+                <button class="btn btn-submit">Enviar Mensaje</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white py-5">
+    <div class="container">
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+      </div>
+      <p class="mb-0">© 2023 TechPartner. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        document.querySelector('.navbar').classList.add('navbar-scrolled');
+      } else {
+        document.querySelector('.navbar').classList.remove('navbar-scrolled');
+      }
+    });
+
+    // Scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const fadeInObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      fadeElements.forEach(el => fadeInObserver.observe(el));
+    });
+  </script>
+</body>
+</html>
